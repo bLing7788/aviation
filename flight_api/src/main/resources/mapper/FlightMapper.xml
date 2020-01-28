@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.fh.dao.FlightMapper">
+
+     <select id="queryCount" resultType="long">
+
+         select count(*) from a_flight
+     </select>
+
+    <select id="queryList" resultType="com.fh.bean.vo.ListReturn">
+
+        select  e.*,j.*,d.*,l.* from t_emp e left join t_job j on e.jobid= j.id
+                                          left join t_dept d on e.deptid = d.id
+                                            left join t_leader l on e.leaderid = l.id
+        limit #{start},#{length}
+    </select>
+<!--
+    <insert id="addOrder">
+
+       INSERT INTO t_order (productId, count, subtotal,isDel) VALUES (#{productId}, #{count},#{subtotal},#{isDel})
+
+    </insert>
+
+    <update id="deleteOrder">
+
+       update t_order set isDel = 1 where id = #{id}
+    </update>
+
+    <select id="toUpdateOrder" resultType="com.fh.model.po.Order">
+
+        select  r.*,t.* from t_order r left join tt_product t on r.productId = t.id where r.id = #{id}
+
+    </select>
+
+    <update id="updateOrder">
+
+        update t_order set productId = #{productId}, count = #{count},  subtotal = #{subtotal}
+    </update>-->
+</mapper>
