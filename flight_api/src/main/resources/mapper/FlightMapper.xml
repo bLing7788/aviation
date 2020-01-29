@@ -12,9 +12,9 @@
 
     <select id="queryList" resultType="com.fh.bean.vo.ListReturn">
 
-        select  e.*,j.*,d.*,l.* from t_emp e left join t_job j on e.jobid= j.id
-                                          left join t_dept d on e.deptid = d.id
-                                            left join t_leader l on e.leaderid = l.id
+        select  e.*,j.*,d.*,l.* from a_flight e left join a_plane j on e.typeid= j.id
+                                          left join a_flightticket d on e.id = d.flightid
+                                            left join a_area l on e.id = l.id
         limit #{start},#{length}
     </select>
 <!--
